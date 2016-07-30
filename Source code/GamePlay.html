@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type='text/javascript' src='GamePlay.js'></script>
+        <script type='text/javascript' src='knockout-3.4.0.js'></script>
+    </head>
+    <body onload="ko.applyBindings(new ClickCounterViewModel());">
+    
+    <div style="width:960px; height: 500px; background-color: navy;padding: 20px;"><span data-bind="text: fullName">This is question 1</span> </div>
+    
+    <button id='button1' data-bind='click: registerClick, disable: hasClickedTooManyTimes' style="width:200px; height:100px; background-color: red; position:absolute;top:300px; left: 100px;">this is answer 1</div>
+    <button id='button2' data-bind='click: registerClick, disable: hasClickedTooManyTimes' style="width:200px; height:100px; background-color: green;position: absolute; top:300px; left:660px">this is answer 2</button>
+    
+    <div>You've clicked <span data-bind='text: numberOfClicks'>&nbsp;</span> times</div>
+    
+    <button data-bind='click: registerClick, disable: hasClickedTooManyTimes'>Click me</button>
+    
+    <div data-bind='visible: hasClickedTooManyTimes' style="Color:#00010">
+        That's too many clicks! Please stop before you wear out your fingers.
+        <button data-bind='click: resetClicks'>Reset clicks</button>
+    </div>
+    </body>
+    
+
+</html>
