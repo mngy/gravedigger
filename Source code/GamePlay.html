@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script type='text/javascript' src='GamePlay.js'></script>
-        <script type='text/javascript' src='knockout-3.4.0.js'></script>
+        <script type='text/javascript' src='js/GamePlay.js'></script>
+        <script type='text/javascript' src='js/knockout-3.4.0.js'></script>
         <style>
             .hideButton{display:none}
             
@@ -42,7 +42,7 @@
     
     <div align='center' style='background-color:navy; width:60%; margin: 0 auto; display: block; position:relative;'>
         
-        <video src="videos/test.m4v" align='center' id='gameVideo' data-bind='event: {ended: resetClicks}' style="width:100%; margin: 0 auto; display: block; text-align: center;" autoplay>
+        <video src="resources/start-question.mp4" align='center' id='gameVideo' data-bind='event: {ended: resetClicks}' style="width:100%; margin: 0 auto; display: block; text-align: center;" autoplay>
     
             <script type='text/javascript'></script>
         </video>
@@ -51,9 +51,11 @@
     
         <input id='button2' class='inner'  data-bind='css: { hideButton: hideButton() == true }, value: answer2, click: registerClick2, disable: hideButton()' style="right: 6%">
         
-        <input id='continue' class='inner' value='Continue' data-bind='css: { hideButton: hideContinueButton() == true }, click: registerContinue, disable: hideContinueButton()' style="left:37.5%; font-size:1.5em; font-weight: bold;">
+        <!--<input id='continue' class='inner' value='Continue' data-bind='css: { hideButton: hideContinueButton() == true }, click: registerContinue, disable: hideContinueButton()' style="left:37.5%; font-size:1.5em; font-weight: bold;">-->
     
     </div>
+    
+    <img src="images/GraveDiggers.png"></img>
     
     </body>
     
