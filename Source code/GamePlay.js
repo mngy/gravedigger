@@ -1,13 +1,13 @@
 var Question1 = {
     question : 'Question 1',
-    answers: ["Answer 1:1", "Answer 1:2"],
+    answers: ["Go on, have a smoke", "Gross! No thanks!"],
     outcomes: ["outcome 1:1", "Outcome 1:2"]
 };
 
 var Question2 = new Object();
 Question2 = {
     question : 'Question 2',
-answers: ["Answer 2:1", "Answer 2:2"],
+answers: ["Salad, please", "Yum, burger"],
 outcomes: ["outcome 2:1", "Outcome 2:2"]
 };
 
@@ -20,12 +20,16 @@ outcomes: ["outcome 3:1", "Outcome 3:2"]
 
 var questions = [Question1, Question2, Question3];
 
+
+
+                                                    
 var ClickCounterViewModel = function(questions) {
     
     this.iterator = ko.observable(0);
     this.answer = ko.observable(0);
-    this.numberOfClicks = ko.observable(0);
-    this.answerButtonView = ko.observable('hidden');
+    this.hideButton = ko.observable(true);
+    this.hideContinueButton = ko.observable(true);
+    var outcome = true;
     
     this.outcome = ko.pureComputed(function() {
                                    return this.iterator() + ':' + this.answer();
@@ -42,35 +46,37 @@ var ClickCounterViewModel = function(questions) {
     this.registerClick1 = function() {
         this.answer(1);
         this.iterator(this.iterator() + 1);
-        this.numberOfClicks(this.numberOfClicks() + 1);
+        this.hideButton(true);
+        document.getElementById('gameVideo').setAttribute('src', 'videos/'+this.iterator()+this.answer()+'.m4v');
+        document.getElementById('gameVideo').load();
+        document.getElementById('gameVideo').play();
     }
     
     this.registerClick2 = function() {
         this.answer(2);
         this.iterator(this.iterator() + 1);
-        this.numberOfClicks(this.numberOfClicks() + 1);
+        this.hideButton(true);
+        document.getElementById('gameVideo').setAttribute('src', 'videos/'+this.iterator()+this.answer()+'.m4v');
+        document.getElementById('gameVideo').load();
+        document.getElementById('gameVideo').play();
     }
     
-    this.registerClick = function() {
-        this.numberOfClicks(this.numberOfClicks() + 1);
-        //document.getElementById('button1').style.display='none'
-    };
-    
     this.resetClicks = function() {
-        this.numberOfClicks(0);
-        //document.getElementById('button1').style.display='inline'
+        if (outcome) {
+            this.hideButton(false);
+            outcome = false;
+        } else {
+            this.hideContinueButton(false);
+            outcome = true;
+        }
     };
     
-    this.registerPlay = function() {
-        this.registerPlay('hidden')
+    this.registerContinue = function() {
+        this.hideContinueButton(true);
+        document.getElementById('gameVideo').setAttribute('src', 'videos/'+this.iterator()+this.answer()+'.m4v');
+        document.getElementById('gameVideo').load();
+        document.getElementById('gameVideo').play();
     };
-    
-    this.registerPause = function() {
-        this.registerPause('hidden')
-    };
-    
-    this.hasClickedTooManyTimes = ko.pureComputed(function() {
-                                                  return this.numberOfClicks() >= 1;
-                                                  }, this);
 };
+
 
