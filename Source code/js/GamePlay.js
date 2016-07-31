@@ -14,7 +14,7 @@ var gender = "";
 var age = "";
 
 var ClickCounterViewModel = function(questions) {
-     document.getElementById("gameVideo").defaultPlaybackRate = 2.0;
+    //document.getElementById("gameVideo").defaultPlaybackRate = 2.0;
     
     this.iterator = ko.observable(0);
     this.hideButton = ko.observable(true);
