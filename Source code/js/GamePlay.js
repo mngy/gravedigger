@@ -14,6 +14,7 @@ var gender = "";
 var age = "";
 
 var ClickCounterViewModel = function(questions) {
+     document.getElementById("gameVideo").defaultPlaybackRate = 2.0;
     
     this.iterator = ko.observable(0);
     this.hideButton = ko.observable(true);
@@ -84,27 +85,27 @@ var ClickCounterViewModel = function(questions) {
     
     
     this.registerAge1 = function() {
-        age = "<18";
+        age = "0-34";
         this.hideAgeButton(true);
         this.hideGenderButton(false);
         
     };
     
     this.registerAge2 = function() {
-        age = "18-25";
+        age = "35-44";
         this.hideAgeButton(true);
         this.hideGenderButton(false);
     };
     
     
     this.registerAge3 = function() {
-        age = "25-35";
+        age = "45-54";
         this.hideAgeButton(true);
         this.hideGenderButton(false);
     };
     
     this.registerAge4 = function() {
-        age = "35+";
+        age = "55+";
         this.hideAgeButton(true);
         this.hideGenderButton(false);
     };
