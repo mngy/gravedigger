@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <title></title>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js'></script>
+    <style>
+        ul{
+            padding:0;
+            margin:0;
+        }
+        li{
+            height:50px;
+            background:grey;
+            list-style-type:none;
+            padding:0;
+            margin:0;
+            text-align:center;
+            right:0;
+            left:0;
+            min-height:90%;
+        }
+        img{
+            top:0;
+            bottom:0;
+            height:100%;
+            width:100%;
+            padding:0;
+            margin:0;
+        }
+        
+        </style>
+
+</head>
+
+<body>
+    <ul>
+        <li><img data-bind="attr: {src:questions[numberOfClicks()].src}, click: incrementClickCounter" /></li>
+    </ul>
+    <script type="text/javascript">
+
+    
+    ko.applyBindings({
+        numberOfClicks : ko.observable(0),
+        
+        questions: [
+            {src:'Slide1.PNG'},
+            {src:'Slide2.PNG'}, 
+            {src:'Slide3.PNG'}, 
+            {src:'Slide4.PNG'}, 
+            {src:'Slide5.PNG'}, 
+            {src:'Slide6.PNG'}, 
+            {src:'Slide7.PNG'}, 
+            {src:'Slide8.PNG'}, 
+            {src:'Slide9.PNG'}, 
+            {src:'Slide10.PNG'},
+            {src:'Slide11.PNG'},
+            {src:'Slide12.PNG'},
+            {src:'Slide13.PNG'},
+            {src:'Slide14.PNG'},
+            {src:'Slide15.PNG'},
+
+        ],
+        incrementClickCounter : function() {
+            var previousCount = this.numberOfClicks();
+            //alert(previousCount);
+            if(previousCount < 14){
+                this.numberOfClicks(previousCount + 1);
+            }
+        },
+
+        
+    });
+</script>
+</body>
+
+</html>
