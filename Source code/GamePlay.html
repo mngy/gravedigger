@@ -10,10 +10,13 @@
                 font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
                 font-style: normal;
                 font-variant: normal;
+                width: 100%;
+                height: 200px;
+                margin:0;
             }
             
             h1 {
-                font-size: 60px;
+                font-size: 3.5em;
                 font-weight: 500;
                 line-height: 26.4px;
             }
@@ -34,28 +37,55 @@
                 font-size: 1em;
                 white-space: normal;
             }
+        
+            img {
+                position: absolute;
+                right: 20px;
+                width: 20%;
+                bottom:10%;
+                
+            }
         </style>
     </head>
     <body onload="ko.applyBindings(new ClickCounterViewModel(questions));">
-    
-    <h1 id="title" align="center" style="width:100%; vertical-align: middle; padding: 15px;">Grave Diggers</h1>
-    
-    <div align='center' style='background-color:navy; width:60%; margin: 0 auto; display: block; position:relative;'>
         
-        <video src="resources/start-question.mp4" align='center' id='gameVideo' data-bind='event: {ended: resetClicks}' style="width:100%; margin: 0 auto; display: block; text-align: center;" autoplay>
+    <h1 id="title" align="center" style="width:100%; vertical-align: middle; padding: 15px;">What's your choice?</h1>
+    
+    <div align='center' style='width:50%; margin: 0 auto; display: block; position:relative;'>
+        
+        <video src="" align='center' id='gameVideo' data-bind='event: {ended: resetClicks}' style="width:100%; margin: 0 auto; display: block; text-align: center;">
     
             <script type='text/javascript'></script>
         </video>
-    
+        
+        <div id='gender' align: 'center' data-bind='css: { hideButton: hideGenderButton() == true },' style="font-color:black;position:absolute; top:25%; text-align: center; width:100%;font-size:2em;">Select your gender</div>
+        
+        <div id='age' align: 'center' data-bind='css: { hideButton: hideAgeButton() == true },' style="font-color:black;position:absolute; top:25%; text-align: center; width:100%;font-size:2em;">Select your age</div>
+        
+        <input id='<18' value = "<18" class='inner' data-bind='css: { hideButton: hideAgeButton() == true }, click: registerAge1, disable: hideAgeButton()' style="width: 20%; left: 0%;"></button>
+            
+        <input id='18-25' value = "18-25" class='inner'  data-bind='css: { hideButton: hideAgeButton() == true }, click: registerAge2, disable: hideAgeButton()' style="width: 20%; left: 25%;">
+        
+        <input id='25-35' value = "25-35" class='inner' data-bind='css: { hideButton: hideAgeButton() == true }, click: registerAge3, disable: hideAgeButton()' style="width: 20%; left: 50%;"></button>
+            
+        <input id='35+' value = "35+" class='inner'  data-bind='css: { hideButton: hideAgeButton() == true }, click: registerAge4, disable: hideAgeButton()' style="width: 20%; left: 75%;">
+                
+        <input id='female' value = "Female" class='inner' data-bind='css: { hideButton: hideGenderButton() == true }, click: registerFemale, disable: hideGenderButton()' style="left: 6%;"></button>
+            
+        <input id='male' value = "Male" class='inner'  data-bind='css: { hideButton: hideGenderButton() == true }, click: registerMale, disable: hideGenderButton()' style="right: 6%">
+                
         <input id='button1' class='inner' data-bind='css: { hideButton: hideButton() == true }, value: answer1, click: registerClick1, disable: hideButton()' style="left: 6%;"></button>
     
         <input id='button2' class='inner'  data-bind='css: { hideButton: hideButton() == true }, value: answer2, click: registerClick2, disable: hideButton()' style="right: 6%">
-        
-        <!--<input id='continue' class='inner' value='Continue' data-bind='css: { hideButton: hideContinueButton() == true }, click: registerContinue, disable: hideContinueButton()' style="left:37.5%; font-size:1.5em; font-weight: bold;">-->
-    
     </div>
     
     <img src="images/GraveDiggers.png"></img>
+    
+    
+    <input id='finish' class='inner' value='Your ending life expectancy is 40 years' type='text' data-bind='css: { hideButton: hideFinishButton() == true }, disable: hideFinishButton()' style="width:100%; height:100%; text-align: center;font-size: 3em;">
+        
+    <input id='continue' class='inner' value='Continue' data-bind='css: { hideButton: hideFinishButton() == true }, click: registerContinue, disable: hideFinishButton()' style="background-color:green; width: 20%; height: 12%; left:40%; font-size:1.5em; font-weight: bold; bottom: 20%">
+        
     
     </body>
     
